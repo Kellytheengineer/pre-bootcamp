@@ -1,0 +1,615 @@
+/* Import Google Fonts for Montserrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Root variables for consistent theming */
+:root {
+    /* Define color variables */
+    --white: #fff; /* White color */
+    --lightGrey: #e7e7e2; /* Light grey background */
+    --darkGrey: #222; /* Dark grey text */
+    --black: #000; /* Black text */
+    --brightMagenta: #dd1063; /* Bright magenta accent */
+    --black10: rgba(0, 0, 0, 0.1); /* 10% black for shadows */
+
+    /* Define font size variables */
+    --xsmall625r: 0.625rem; /* Extra small font size */
+    --small75r: 0.75rem; /* Small font size */
+    --medium14: 14px; /* Medium font size in pixels */
+    --medium875r: 0.875rem; /* Medium font size slightly smaller */
+    --large1r: 1rem; /* Large font size */
+    --xlarge125r: 1.25rem; /* Extra large font size */
+}
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif; /* Default font for entire document */
+    flex: 0 1 auto; /* Flexible sizing for layout */
+}
+
+/* Body styles */
+body {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 320px;
+    max-width: 400px;
+    width: 400px; /* Fixed width with min and max constraints */
+    background-color: var(--white); /* White background */
+    overflow-x: hidden; /* Hide horizontal overflow */
+    height: 100vh; /* Full viewport height */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (min-width: 300px) and (max-width: 430px) {
+    body {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+}
+
+/* Generic style for div elements */
+div {
+    display: block; /* Default block display for divs */
+}
+
+/* Fixed section styles */
+.fixed-top {
+    max-width: 400px; /* Maximum width for fixed top section */
+    width: 100%; /* Full width */
+    height: 180px; /* Fixed height */
+    z-index: 1; /* Ensure it appears above other elements */
+    text-align: center; /* Center-align content */
+    position: fixed; /* Fixed position */
+    top: 0; /* Fixed to top of viewport */
+}
+
+/* Banner styles */
+.banner {
+    background-color: var(--lightGrey); /* Light grey background */
+    width: 100%; /* Full width */
+    padding: 20px; /* Padding inside banner */
+}
+
+.banner p {
+    padding: 13px; /* Padding for paragraphs inside banner */
+    font-size: var(--medium875r); /* Use defined font size variable */
+    color: var(--darkGrey); /* Use defined dark grey text color */
+}
+
+.banner a {
+    color: var(--darkGrey); /* Dark grey text for links in banner */
+}
+
+/* Search bar styles */
+.search-bar {
+    background-color: var(--white); /* White background */
+    width: 100%; /* Full width */
+    margin: 0 auto; /* Center horizontally */
+    padding: 10px 20px; /* Padding inside search bar */
+    border-top-left-radius: 20px; /* Rounded corners */
+    border-top-right-radius: 20px; /* Rounded corners */
+}
+
+.search-bar .content {
+    border: 2px solid var(--black10); /* Black with 10% opacity border */
+    box-shadow: 2px 3px 8px var(--black10); /* Black with 10% opacity shadow */
+    border-radius: 35px; /* Rounded corners */
+    background-color: transparent; /* Transparent background */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    min-height: 56px; /* Minimum height */
+    display: flex; /* Flexbox layout */
+}
+
+.search-icon {
+    margin-left: 4px; /* Margin for left of search icon */
+    padding-left: 10px; /* Padding left */
+    padding: 7px; /* Padding */
+    padding-right: 15px; /* Padding right */
+    display: flex; /* Flexbox layout */
+    align-items: center; /* Center-align items vertically */
+    justify-content: center; /* Center-align items horizontally */
+    font-size: 22px; /* Font size */
+    color: var(--black); /* Black text color */
+}
+
+.search-icon a {
+    width: 20px; /* Width of search icon */
+    height: 20px; /* Height of search icon */
+    color: var(--black); /* Black text color */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.search-text {
+    display: inline-block; /* Inline block display */
+    color: var(--darkGrey); /* Dark grey text color */
+    font-size: 10px; /* Small font size */
+    padding-top: 10px; /* Padding top */
+    padding-left: 2px; /* Padding left */
+}
+
+.search-text p {
+    text-align: left; /* Left-align text */
+    color: var(--black); /* Black text color */
+    font-size: var(--small75r); /* Use defined font size variable */
+}
+
+.search-text a {
+    text-decoration: none; /* Remove underline from links */
+}
+
+.search-query {
+    font-size: 8px; /* Very small font size */
+}
+
+/* Categories scroller styles */
+.categories {
+    display: inline-grid; /* Inline grid layout */
+    grid-auto-flow: column; /* Columns flow */
+    grid-auto-columns: 17%; /* Automatic column width */
+    gap: 1.3rem; /* Gap between items */
+    background-color: var(--white); /* White background */
+    padding: 3px 10px; /* Padding inside */
+    margin: 0 auto; /* Center horizontally */
+    height: 60px; /* Fixed height */
+    width: 100%; /* Full width */
+    overflow-x: auto; /* Horizontal scrolling */
+    overscroll-behavior-inline: contain; /* Scroll behavior */
+    position: relative; /* Relative position */
+    border-bottom: 1px solid var(--black10); /* Black with 10% opacity border */
+    box-shadow: 2px 3px 8px var(--black10); /* Black with 10% opacity shadow */
+    size-adjust: 100%; /* Adjust size */
+}
+
+.categories::-webkit-scrollbar {
+    /* WebKit scrollbar customization */
+    width: 0; /* Hide scrollbar */
+    height: 0; /* Hide scrollbar */
+}
+
+.category {
+    display: inline-grid; /* Inline grid layout */
+    gap: 0.45rem; /* Gap between items */
+    display: grid; /* Grid layout */
+    min-width: min(calc(64 / 2 + 12px), 40px); /* Minimum width calculation */
+    grid-template-rows: auto auto; /* Rows layout */
+    margin: 0 5px; /* Margin */
+    justify-content: center; /* Center-align content horizontally */
+    align-items: center; /* Center-align content vertically */
+    flex-wrap: nowrap; /* No wrapping */
+    opacity: 0.5; /* 50% opacity */
+    text-align: center; /* Center-align text */
+    font-weight: 300; /* Lighter font weight */
+    cursor: pointer; /* Pointer cursor on hover */
+    columns: auto max-content; /* Columns */
+}
+
+.category > img {
+    inline-size: 23px; /* Inline size for images */
+    /* aspect-ratio: 16/9; */ /* Aspect ratio commented out */
+}
+
+/* Category item styles */
+.category {
+    object-fit: cover; /* Ensure content covers the specified area */
+    padding-bottom: 0px; /* No padding at the bottom */
+    margin-bottom: 0; /* No margin at the bottom */
+    justify-self: center; /* Center horizontally within its grid cell */
+    align-self: center; /* Center vertically within its grid cell */
+    text-align: center; /* Center-align text */
+}
+
+.category p {
+    font-size: var(--xsmall625r); /* Small font size */
+    font-weight: 700; /* Bold font weight */
+    padding: 0 0.15rem; /* Small padding */
+    white-space: nowrap; /* No wrapping */
+    padding-bottom: 5px; /* Padding at the bottom */
+    text-align: center; /* Center-align text */
+    line-height: 10px; /* Line height */
+    justify-self: center; /* Center horizontally within its grid cell */
+    -webkit-text-size-adjust: 100%; /* Adjust text size */
+    text-size-adjust: 100%; /* Adjust text size */
+}
+
+.category:hover,
+.category.active {
+    font-weight: 700; /* Bold font weight on hover or active */
+    opacity: 1; /* Full opacity on hover or active */
+}
+
+.category:hover,
+.category.active {
+    border-bottom: 2px solid var(--darkGrey); /* Solid bottom border on hover or active */
+    cursor: default; /* Default cursor */
+    border-bottom-width: 50%; /* Width of the bottom border */
+}
+
+/* Main content container */
+.main-content-container {
+    margin-top: 200px; /* Margin from the top */
+    padding-bottom: 12px; /* Padding at the bottom */
+    z-index: -1; /* Negative z-index */
+}
+
+/* Grid container 1 */
+.container-1 {
+    display: grid; /* Grid display */
+    margin-top: 215px; /* Margin from the top */
+    margin-bottom: 12px; /* Margin at the bottom */
+    margin-left: auto; /* Margin on the left */
+    margin-right: auto; /* Margin on the right */
+    padding: 0 24px; /* Padding */
+    gap: 20px; /* Gap between grid items */
+    width: 400px; /* Fixed width */
+    height: auto; /* Automatic height */
+    color: var(--black); /* Black text color */
+    grid-template-columns: 1fr; /* Single column layout */
+    padding-inline: 24px; /* Inline padding */
+    padding-block: 48px; /* Block padding */
+    margin-inline: auto; /* Auto margin inline */
+}
+
+/* Grid container 2 */
+.container-2 {
+    display: grid; /* Grid display */
+    margin-bottom: 12px; /* Margin at the bottom */
+    margin-left: auto; /* Margin on the left */
+    margin-right: auto; /* Margin on the right */
+    padding: 0 24px; /* Padding */
+    gap: 20px; /* Gap between grid items */
+    width: 100%; /* Full width */
+    height: auto; /* Automatic height */
+    color: var(--black); /* Black text color */
+    grid-template-columns: 1fr; /* Single column layout */
+    padding-inline: 24px; /* Inline padding */
+    padding-block: 48px; /* Block padding */
+    margin-inline: auto; /* Auto margin inline */
+}
+
+/* Card container */
+.card-container {
+    display: flex; /* Flex display */
+    justify-content: space-between; /* Space between items */
+}
+
+/* Card styles */
+.container-2 .card,
+.container-1 .card {
+    background-color: var(--white); /* White background */
+    position: relative; /* Relative positioning */
+    width: 370px; /* Fixed width */
+    height: 340px; /* Fixed height */
+    display: block; /* Block display */
+    margin-left: auto; /* Margin on the left */
+    margin-right: auto; /* Margin on the right */
+    margin-bottom: 12px; /* Margin at the bottom */
+}
+
+/* Box within card */
+.container-1 .card .box {
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Position from the top */
+    bottom: 0px; /* Position from the bottom */
+    display: flex; /* Flex display */
+    justify-content: flex-start; /* Justify content to the start */
+    align-items: flex-start; /* Align items to the start */
+    width: 100%; /* Full width */
+}
+
+/* Content within box */
+.container-1 .card .box .content {
+    padding: 0; /* No padding */
+    margin-bottom: 0px; /* No margin at the bottom */
+}
+
+/* Image within content */
+.box .content > img {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    border-radius: 10px; /* Rounded corners */
+    display: inline-block; /* Inline block display */
+    vertical-align: bottom; /* Align bottom */
+    object-fit: cover; /* Cover the specified area */
+    background-size: cover; /* Cover background size */
+    align-content: center; /* Center-align content */
+    justify-content: center; /* Center-align content */
+    margin-bottom: 0px; /* No margin at the bottom */
+    background-position: 50% 50%; /* Background position */
+    background-repeat: no-repeat; /* No background repeat */
+}
+
+/* Titles and subtitles */
+.place-title,
+.content .title,
+.content .when {
+    font-size: var(--medium14); /* Medium font size */
+    font-weight: 600; /* Semi-bold font weight */
+}
+
+/* Copyright and host */
+.copyright,
+.place-subtitle,
+.content .host {
+    font-size: var(--medium14); /* Medium font size */
+    font-weight: 400; /* Normal font weight */
+}
+
+/* Content box overlay */
+.content-box-overlay {
+    width: 90%; /* 90% width */
+    height: 250px; /* Fixed height */
+    overflow: hidden; /* Hidden overflow */
+    position: absolute; /* Absolute positioning */
+    pointer-events: none; /* No pointer events */
+    top: 0px; /* Position from the top */
+    bottom: 0; /* Position from the bottom */
+    left: 20px; /* Position from the left */
+    right: 0; /* Position from the right */
+    margin: 0 auto; /* Center margin */
+}
+
+/* Live content overlay */
+.content-box-overlay .live {
+    position: absolute; /* Absolute positioning */
+    top: 10px; /* Position from the top */
+    left: 0px; /* Position from the left */
+    background-color: rgba(255, 255, 255, 0.8); /* White with opacity */
+    padding: 10px; /* Padding */
+    margin: 5px; /* Margin */
+    font-size: var(--xsmall625r); /* Small font size */
+    display: inline-block; /* Inline block display */
+    border-radius: 18px; /* Rounded corners */
+    letter-spacing: 0.2em; /* Letter spacing */
+}
+
+/* Share content overlay */
+.content-box-overlay .share {
+    position: absolute; /* Absolute positioning */
+    top: 10px; /* Position from the top */
+    right: 0px; /* Position from the right */
+    background-color: rgba(255, 255, 255, 0.8); /* White with opacity */
+    padding: 7px; /* Padding */
+    margin: 5px; /* Margin */
+    height: 28px; /* Fixed height */
+    width: 28px; /* Fixed width */
+    align-self: center; /* Align self */
+    justify-content: center; /* Center-align content */
+    font-size: var(--medium14); /* Medium font size */
+    display: inline-block; /* Inline block display */
+    border-radius: 50%; /* Rounded circle */
+}
+
+/* Marker */
+.marker {
+    position: absolute; /* Absolute positioning */
+    bottom: 10px; /* Position from the bottom */
+    left: 40%; /* Position from the left */
+    transform: translate(50% 50%); /* Translate transform */
+}
+
+/* Dot */
+.dot {
+    height: 5px; /* Fixed height */
+    width: 5px; /* Fixed width */
+    background-color: #ddd; /* Light grey background */
+    border-radius: 50%; /* Rounded circle */
+    display: inline-block; /* Inline block display */
+    padding: 2px; /* Padding */
+}
+
+.dot:first-child {
+    background-color: var(--white); /* White background for first child */
+}
+
+/* Inspiration for future gateways section */
+.links {
+	background-color: var(--lightGrey); /* Light grey background */
+	width: 100%; /* Full width */
+	height: auto; /* Automatic height */
+	z-index: -1; /* Negative z-index */
+	color: var(--black); /* Black text color */
+	padding-inline: 24px; /* Horizontal padding */
+	padding-block: 48px; /* Vertical padding */
+	margin: 0 auto; /* Centered margin */
+}
+
+/* Support links and future links container */
+.support-links,
+.future-links-container {
+	border: none; /* No border */
+	border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* Bottom border */
+}
+
+.title {
+	font-size: var(--small75r); /* Small font size */
+	font-weight: 300; /* Light font weight */
+	margin-bottom: 8px; /* Margin at the bottom */
+	margin-top: 10px; /* Margin at the top */
+	color: var(--darkGrey); /* Dark grey text color */
+	text-decoration: none; /* No text decoration */
+}
+
+/* Future category container */
+.future-category {
+	width: 100%; /* Full width */
+	display: flex; /* Flex display */
+	gap: 10px; /* Gap between items */
+	flex-wrap: nowrap; /* No wrapping */
+	overscroll-behavior-inline: contain; /* Contain overscroll behavior */
+	overflow-x: auto; /* Horizontal overflow scrolling */
+}
+
+.future-category::-webkit-scrollbar {
+	/* WebKit scrollbar */
+	width: 0; /* No scrollbar width */
+	height: 0; /* No scrollbar height */
+}
+
+.future-category > button {
+	display: flex; /* Flex display */
+	background-color: transparent; /* Transparent background */
+	padding: 10px; /* Padding */
+	padding-bottom: 10px; /* Padding at the bottom */
+	border: none; /* No border */
+	font-size: var(--medium14); /* Medium font size */
+	font-weight: 600; /* Semi-bold font weight */
+	color: var(--lightGrey); /* Light grey text color */
+	line-height: 14px; /* Line height */
+	white-space: nowrap; /* No wrapping */
+}
+
+button:focus {
+	border: none; /* No border on focus */
+}
+
+.future-category {
+	border-bottom: 1px solid #6a6a6a; /* Bottom border */
+}
+
+.future-category button:hover {
+	border-bottom: 2px solid var(--darkGrey); /* Thick bottom border on hover */
+}
+
+/* Left and right future links */
+.future-links.left {
+	position: absolute; /* Absolute positioning */
+	left: 0; /* Positioned to the left */
+}
+
+.future-links.right {
+	position: absolute; /* Absolute positioning */
+	right: 0; /* Positioned to the right */
+}
+
+.future-links.left:hover,
+.future-links.right:hover {
+	border-bottom: none; /* No bottom border on hover */
+}
+
+/* Future links container and places */
+.future-links-container .places {
+	width: 100%; /* Full width */
+	margin: 0 auto; /* Centered margin */
+	display: grid; /* Grid display */
+	grid-template-columns: 1fr 1fr; /* Two columns */
+	gap: 0.5rem; /* Gap between items */
+}
+
+.places .place {
+	margin-top: 20px; /* Margin at the top */
+	margin-bottom: 20px; /* Margin at the bottom */
+}
+
+.places .place:last-child {
+	margin-bottom: 1.5rem; /* Larger margin at the bottom for last child */
+}
+
+/* Support, hosting, and about us sections */
+.footer,
+.country-currency-copyright-links,
+.company-links,
+.about-us-links,
+.hosting-links,
+.support-links {
+	padding-block: 24px; /* Vertical padding */
+}
+
+h2 {
+	text-decoration: none; /* No text decoration */
+}
+
+ul,
+ol {
+	display: grid; /* Grid display */
+	list-style: none; /* No list style */
+	padding: 0; /* No padding */
+	margin: 0; /* No margin */
+	gap: 12px; /* Gap between items */
+}
+
+li,
+li a,
+a {
+	text-decoration: none; /* No text decoration */
+	color: var(--darkGrey); /* Dark grey text color */
+	font-size: var(--large1r); /* Large font size */
+}
+
+/* Copyright and currency section */
+.country-currency {
+	padding-bottom: 20px; /* Padding at the bottom */
+	font-weight: 600; /* Semi-bold font weight */
+}
+
+.country-currency a {
+	text-decoration: none; /* No text decoration */
+	color: #0f0101; /* Dark color */
+	font-size: 0.7em; /* Small font size */
+}
+
+.country-currency span {
+	float: center; /* Center float */
+	margin-left: 4rem; /* Margin on the left */
+}
+
+.copyright {
+	font-size: 8px; /* Small font size */
+	padding-bottom: 10px; /* Padding at the bottom */
+}
+
+ol {
+	display: inline; /* Inline display for ordered list */
+}
+
+ol li {
+	display: inline-block; /* Inline block for list items */
+	line-height: 26px; /* Line height */
+}
+
+/* Footer section */
+.fixed-bottom {
+	background-color: var(--white); /* White background */
+	position: fixed; /* Fixed positioning */
+	bottom: 0; /* Positioned at the bottom */
+	z-index: 100; /* Higher z-index */
+	height: 4rem; /* Fixed height */
+	max-width: 400px; /* Maximum width */
+	width: 100%; /* Full width */
+	margin: 0 auto; /* Centered margin */
+	padding-block: 4px; /* Vertical padding */
+}
+
+.footer {
+	display: flex; /* Flex display */
+	align-items: center; /* Center-align items */
+	justify-content: center; /* Center content */
+	font-size: 10px; /* Small font size */
+	text-align: center; /* Center-align text */
+	margin: 0 auto; /* Centered margin */
+}
+
+.footer > div {
+	display: flex; /* Flex display */
+	flex-direction: column; /* Column direction */
+	justify-content: center; /* Center content */
+	align-items: center; /* Center-align items */
+	margin: 0 20px; /* Margin */
+	cursor: pointer; /* Pointer cursor */
+}
+
+.footer i {
+	font-size: 24px; /* Large icon size */
+	cursor: pointer; /* Pointer cursor */
+}
+
+.footer p {
+	margin-top: 8px; /* Margin at the top */
+	font-size: var(--medium); /* Medium font size */
+}
+
+.footer .explore {
+	color: var(--brightMagenta); /* Bright magenta text color */
+}
